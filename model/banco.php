@@ -34,5 +34,32 @@ class Banco{
 
     }
 
+    public function getCadastro($id) {
+        try {
+            if (isset($id) && $id >0) {
+                $stmt = $this->mysqli->query("SELECT * FROM cadastro WHERE id = '".$id."';");
+            }else {
+                $stmt = $this->mysqli->query("SELECT * FROM cadastro;");
+            }
+            $lista = $stmt->fetch_all(MYSQLI_ASSOC);
+            $f_lista = array();
+            $i = 0;
+            foreach ($lista as $l) {
+                $f_lista[$i]['id'] = $l['id'];
+                $f_lista[$i]['email'] = $l['email'];
+                $f_lista[$i]['senha'] = $l['senha'];
+                $f_lista[$i]['endereco'] = $l['endereco'];
+                $f_lista[$i]['bairro'] = $l['bairro'];
+                $f_lista[$i]['cep'] = $l['cep'];
+                $f_lista[$i]['cidade'] = $l['cidade'];
+                $f_lista[$i]['estado'] = $l['estado'];
+                $i++;
+            }
+            return $f_lista;
+        } catch (Exception $e) {
+            echo "Ocorreu um erro ao tentar Buscar Todos." . $e;
+        }
+    }
+
 }    
 ?>

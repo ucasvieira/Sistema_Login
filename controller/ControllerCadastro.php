@@ -32,6 +32,11 @@ class cadastroController
         }
     }
 
+    public function listar($id)
+    {
+        return $result = $this->cadastro->listar($id);
+    }
+
 }
 new cadastroController();
 ?>
