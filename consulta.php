@@ -93,7 +93,10 @@ require_once("controller/ControllerCadastro.php");
                                 <td scope="col"><?php echo $result[$i]['estado']; ?></td>
                                 <td scope="col">
                                     <button type="button" class="btn btn-dark" onclick="location.href='EditarCliente.php?id=<?php echo $result[$i]['id']; ?>'" >Editar</button>
-                                    <button type="button" class="btn btn-dark" >Excluir</button>
+                                    <button type="button" class="btn btn-dark" onclick="var result = confirm('Tem certeza que quer excluir o registro? 🤔');
+                                        if (result == true) {
+                                            location.href='excluir.php?id=<?php echo $result[$i]['id']; ?>'
+                                        }">Excluir</button>
                                 </td>
                             </tr>
                         <?php
